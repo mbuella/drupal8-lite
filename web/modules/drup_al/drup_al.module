@@ -1,0 +1,11 @@
+<?php
+
+function drup_al_theme($existing, $type, $theme, $path) {
+  $module_path =  drupal_get_path('module', 'drup_al');
+  return [
+    'post_list' => [
+      'path' => $module_path . '/templates',
+      'variables' => ['posts' => NULL],
+    ],
+  ];
+}

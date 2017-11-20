@@ -1,0 +1,24 @@
+<div id="page">
+
+{% if page.headline %}
+  <section id="headline">
+    {{ page.headline }}
+  </section> 
+{% endif %}
+
+  <header>
+    {{ page.header }}
+  </header>
+  
+  <section id="main">
+    {{ page.content }}
+  {% if page.sidebar %}
+    {{ page.sidebar}}
+  {% endif %}
+  </section>
+  
+  <footer>
+    {{ page.footer }}
+  </footer>
+  
+</div>

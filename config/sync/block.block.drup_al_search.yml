@@ -1,0 +1,22 @@
+uuid: 41d3ab31-9a2d-4b39-b906-0808b2f0bdc1
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - drup_al
+_core:
+  default_config_hash: F3d5hyAFunLh4PhGviJF019fHn1Z3_zy5gzsQ0tX1K0
+id: drup_al_search
+theme: drup_al
+region: header
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

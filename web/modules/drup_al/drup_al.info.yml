@@ -1,0 +1,6 @@
+name: drup.al Module
+description: A Wonderful Drupal Module.
+package: Custom
+type: module
+version: 1.0
+core: 8.x

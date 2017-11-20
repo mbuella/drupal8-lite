@@ -1,0 +1,14 @@
+uuid: 921f312e-14ca-493a-b38a-c838e49b46f5
+name: 'Drupal 8 Sample Site - Lite'
+mail: site@localhost
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: AyT9s8OUcclfALRE_imByOMgtZ19eOlqdF6zI3p7yqo

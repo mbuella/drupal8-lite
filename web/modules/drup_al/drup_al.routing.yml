@@ -1,0 +1,7 @@
+post.list:
+  path: '/post'
+  defaults:
+    _controller: '\Drupal\drup_al\Controller\PostController::listPost'
+    _title: 'Post List'
+  requirements:
+    _permission: 'access content'

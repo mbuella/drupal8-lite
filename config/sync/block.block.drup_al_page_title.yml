@@ -1,0 +1,20 @@
+uuid: 1fd2818a-84f1-4aff-869a-0f6db9a0b8a1
+langcode: en
+status: false
+dependencies:
+  theme:
+    - drup_al
+_core:
+  default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
+id: drup_al_page_title
+theme: drup_al
+region: header
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

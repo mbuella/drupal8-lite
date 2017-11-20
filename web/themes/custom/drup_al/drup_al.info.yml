@@ -1,0 +1,12 @@
+name: drup_al
+description: Drupal Lite Very Simple Custom Theme
+base theme: stable
+# version: 1
+type: theme
+core: 8.x
+regions:
+  # headline: Headline
+  header: Header
+  content: Content
+  # sidebar: Sidebar
+  footer: Footer
