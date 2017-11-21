@@ -1,1 +1,11 @@
-<h3 style="color: blue">{{ posts }}</h3>
+{% for post in posts %}
+  {{ post.title }}
+  <br>
+  {{ post.category }}
+  <br>
+  {{ post.intro }}
+  <br>
+  <a href="#">Read more</a>
+  <br>
+  <br>
+{% endfor %}
