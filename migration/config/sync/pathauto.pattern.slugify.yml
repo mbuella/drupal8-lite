@@ -1,0 +1,33 @@
+uuid: ac074f8e-48b7-4838-a71e-dae5aa5457c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: slugify
+label: slugify
+type: 'canonical_entities:node'
+pattern: 'post/[node:title]'
+selection_criteria:
+  6af46ad0-a397-4fe0-ab91-99b02bc95762:
+    id: node_type
+    bundles:
+      post: post
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 6af46ad0-a397-4fe0-ab91-99b02bc95762
+  5f28ec3d-ff81-43b5-8f21-dd730dcacd74:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 5f28ec3d-ff81-43b5-8f21-dd730dcacd74
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language
