@@ -24,6 +24,7 @@ class PostController {
       $postList[] = array(
         'title' => $entity->get('title')->value,
         'intro' => $entity->get('body')->summary,
+        'slug' => $entity->get('field_post_slug')->value,
         // title value of the category entity reference (entity field)
         'category' => $entity->get('field_post_category')->entity->get('title')->value,
       );
