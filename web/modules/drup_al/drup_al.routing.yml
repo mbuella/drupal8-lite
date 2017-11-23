@@ -5,3 +5,12 @@ post.list:
     _title: 'Post List'
   requirements:
     _permission: 'access content'
+    
+post.view:
+  path: '/post/{slug}'
+  defaults:
+    _controller: '\Drupal\drup_al\Controller\PostController::viewPost'
+    _title: 'Post View'
+  requirements:
+    _permission: 'access content'
+    

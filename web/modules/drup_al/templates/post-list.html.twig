@@ -5,7 +5,7 @@
   <br>
   {{ post.intro }}
   <br>
-  <a href="#">Read more</a>
+  <a href="{{ url('post.view',{'slug': post.slug}) }}">Read more</a>
   <br>
   <br>
 {% endfor %}

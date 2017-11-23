@@ -37,4 +37,9 @@ class PostController {
       '#posts' => $postList,
     );
   }
+  
+  public function viewPost($slug) {
+    // dump($slug);
+    die();
+  }
 }
