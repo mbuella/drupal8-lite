@@ -7,7 +7,7 @@ post.list:
     _permission: 'access content'
     
 post.view:
-  path: '/post/{slug}'
+  path: '/post/{id}'
   defaults:
     _controller: '\Drupal\drup_al\Controller\PostController::viewPost'
     _title: 'Post View'

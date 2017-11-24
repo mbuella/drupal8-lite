@@ -9,6 +9,10 @@ function drup_al_theme($existing, $type, $theme, $path) {
       'path' => $module_path . '/templates',
       'variables' => ['posts' => NULL],
     ],
+    'post_view' => [
+      'path' => $module_path . '/templates',
+      'variables' => ['post' => false],
+    ],
   ];
 }
 

@@ -14,17 +14,16 @@ class PostController {
                       ->condition('type', 'post');
     $nids = $query->execute();
     
-    // fetch nodes using the ids
-    $node_storage = \Drupal::entityManager()->getStorage('node'); 
-    $mult = $node_storage->loadMultiple($nids);
-    
+    // fetch nodes using the ids    
+    $entities = entity_load_multiple('node', $nids);
     
     // loop through the fetch nodes
-    foreach($mult as $entity) {
+    foreach($entities as $entity) {
       $postList[] = array(
+        'id' => $entity->id(),
         'title' => $entity->get('title')->value,
         'intro' => $entity->get('body')->summary,
-        'slug' => $entity->get('field_post_slug')->value,
+        // 'slug' => $entity->get('field_post_slug')->value,
         // title value of the category entity reference (entity field)
         'category' => $entity->get('field_post_category')->entity->get('title')->value,
       );
@@ -38,8 +37,23 @@ class PostController {
     );
   }
   
-  public function viewPost($slug) {
-    // dump($slug);
-    die();
+  public function viewPost($id) {
+    //load post using id
+    $entity = entity_load('node', $id);
+    $post = array(
+        // 'id' => $entity->id(),
+        'title' => $entity->get('title')->value,
+        'content' => $entity->get('body')->value,
+        // 'slug' => $entity->get('field_post_slug')->value,
+        // title value of the category entity reference (entity field)
+        'category' => $entity->get('field_post_category')->entity->get('title')->value,
+      );
+      
+    // dump($post);
+    
+    return array(
+      '#theme' => 'post_view',
+      '#post' => $post,
+    );
   }
 }
