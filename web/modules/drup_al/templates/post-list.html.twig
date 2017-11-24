@@ -8,4 +8,6 @@
   <a href="{{ url('post.view',{'id': post.id}) }}">Read more</a>
   <br>
   <br>
+{% else %}
+  <p>There's no post to load as for the moment.</p>
 {% endfor %}

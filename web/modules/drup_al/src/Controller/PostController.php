@@ -12,15 +12,22 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class PostController extends ControllerBase {
   
   private $postManager;
+  protected $loggerFactory;
   
-  public function __construct(PostManager $postManager) {
-    $this->postManager = $postManager;
+  public function __construct($services) {
+    if(count($services) > 0) {
+      $this->postManager = $services['postManager'];
+      $this->loggerFactory = $services['loggerFactory'];      
+    }
   }
   
   public static function create(ContainerInterface $container) {
-    $postManager = $container->get('drup_al.post_manager');
-    
-    return new static($postManager);
+    return new static(
+      array(
+        'postManager' => $container->get('drup_al.post_manager'),
+        'loggerFactory' => $container->get('logger.factory'),
+      )
+    );
   }
   
   public function listPost() {
@@ -28,6 +35,16 @@ class PostController extends ControllerBase {
     
     // fetch nodes using the ids    
     $entities = $this->postManager->getPosts();
+    
+    //log fetching of post
+    $this->loggerFactory
+         ->get('drup_al') //channel
+         ->info(
+          '@count posts has been loaded successfully',
+          array(
+            '@count' => count($entities)
+          )
+         );
     
     // loop through the fetch nodes
     foreach($entities as $entity) {
