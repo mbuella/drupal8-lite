@@ -5,17 +5,29 @@
  */
 namespace Drupal\drup_al\Controller;
 
-class PostController {
+use Drupal\drup_al\Entity\Manager\PostManager;
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+class PostController extends ControllerBase {
+  
+  private $postManager;
+  
+  public function __construct(PostManager $postManager) {
+    $this->postManager = $postManager;
+  }
+  
+  public static function create(ContainerInterface $container) {
+    $postManager = $container->get('drup_al.post_manager');
+    
+    return new static($postManager);
+  }
+  
   public function listPost() {
     $postList = [];
     
-    //fetch ids (nids), with conditions (type of post)
-    $query = \Drupal::entityQuery('node')
-                      ->condition('type', 'post');
-    $nids = $query->execute();
-    
     // fetch nodes using the ids    
-    $entities = entity_load_multiple('node', $nids);
+    $entities = $this->postManager->getPosts();
     
     // loop through the fetch nodes
     foreach($entities as $entity) {
@@ -39,7 +51,7 @@ class PostController {
   
   public function viewPost($id) {
     //load post using id
-    $entity = entity_load('node', $id);
+    $entity = $this->postManager->getPost($id);
     $post = array(
         // 'id' => $entity->id(),
         'title' => $entity->get('title')->value,

@@ -1,0 +1,3 @@
+services:
+    drup_al.post_manager:
+        class: Drupal\drup_al\Entity\Manager\PostManager
