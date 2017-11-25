@@ -295,7 +295,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'PMuVkEirtjyq89PMLkI9nj6-5L6gadivbCZYHwuHwYN_fqVES6cYgJOV9s2Z3kDyQ-W6jx42MQ';
 
 /**
  * Deployment identifier.
@@ -783,3 +783,28 @@ $settings['entity_update_batch_size'] = 50;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+/* $databases['default']['default'] = array (
+  'database' => 'drupal8_lite',
+  'username' => 'root',
+  'password' => '',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+); */
+//$settings['install_profile'] = 'minimal';
+
+//$config_directories['sync'] = 'sites/default/files/config/sync';
+$databases['default']['default'] = array (
+  'database' => 'drupal8_lite',
+  'username' => 'root',
+  'password' => 'root',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['install_profile'] = 'minimal';
+$config_directories['sync'] = 'sites/default/files/config/sync';
