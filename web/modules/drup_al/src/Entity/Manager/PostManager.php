@@ -2,6 +2,8 @@
 
 namespace Drupal\drup_al\Entity\Manager;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class PostManager
 {
   public function getPosts()
@@ -17,6 +19,10 @@ class PostManager
   
   public function getPost($id)
   {
-    return entity_load('node', $id);
+    if($post = entity_load('node', $id)) {
+      return $post;      
+    }
+    //throw post not found
+    throw new NotFoundHttpException("That post does not exist!");
   }
 }
