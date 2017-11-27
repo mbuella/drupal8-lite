@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\PhpStorage\PhpStorageFactory;
+use Drupal\Core\Cache\Cache;
+
 $node = null;
 
 function drup_al_theme($existing, $type, $theme, $path) {
@@ -23,7 +26,13 @@ function drup_al_node_presave(Drupal\node\NodeInterface $node) {
       post_presave($node);
     break;
   }
+  
+  drup_al_clear_cache();
+}
 
+function drup_al_node_delete(Drupal\node\NodeInterface $node) {
+  //last case: delete all Twig cache
+  drup_al_clear_cache();
 }
 
 function post_presave(Drupal\node\NodeInterface $node) {
@@ -31,6 +40,16 @@ function post_presave(Drupal\node\NodeInterface $node) {
     $node->set('field_post_slug',
       \Drupal::service('pathauto.alias_cleaner')
         ->cleanString($node->get('title')->value)
-    );   
+    );
+  }
+}
+
+function drup_al_clear_cache() {
+  //last case: delete all Twig cache after post create/update 
+  $module_handler = \Drupal::moduleHandler();
+  $module_handler->invokeAll('cache_flush');
+  // Cache::getBins()['page']->deleteAll();
+  foreach (Cache::getBins() as $service_id => $cache_backend) {
+   $cache_backend->deleteAll();
   }
 }
