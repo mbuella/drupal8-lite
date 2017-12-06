@@ -24,3 +24,14 @@ post.view:
   requirements:
     _permission: 'access content'
     
+    
+# Error routes
+
+error.404:
+  path: '/error-404'
+  defaults:
+    _controller: '\Drupal\drup_al\Controller\MainController::error404'
+    _title: 'Error 404'
+  requirements:
+    _permission: 'access content'
+    

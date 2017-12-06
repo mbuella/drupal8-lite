@@ -11,6 +11,9 @@ function drup_al_theme($existing, $type, $theme, $path) {
     'main_index' => [
       'path' => $module_path . '/templates/index',
     ],
+    'error_404' => [
+      'path' => $module_path . '/templates/error',
+    ],
     'post_list' => [
       'path' => $module_path . '/templates/post',
       'variables' => ['posts' => NULL],
