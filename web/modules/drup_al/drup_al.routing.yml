@@ -1,3 +1,13 @@
+main.index:
+  path: '/index'
+  defaults:
+    _controller: '\Drupal\drup_al\Controller\MainController::index'
+    _title: 'Main (Homepage)'
+  requirements:
+    _permission: 'access content'
+
+
+# Post routes
 post.list:
   path: '/post'
   defaults:

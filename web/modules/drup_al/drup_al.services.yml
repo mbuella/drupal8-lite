@@ -1,3 +1,10 @@
 services:
+    # ROUTING ALTERATION
+    drup_al.route_subscriber:
+        class: Drupal\drup_al\Routing\RouteSubscriber
+        tags:
+          - { name: event_subscriber }
+
+    # MANAGERS
     drup_al.post_manager:
         class: Drupal\drup_al\Entity\Manager\PostManager

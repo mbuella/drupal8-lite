@@ -8,12 +8,15 @@ $node = null;
 function drup_al_theme($existing, $type, $theme, $path) {
   $module_path =  drupal_get_path('module', 'drup_al');
   return [
+    'main_index' => [
+      'path' => $module_path . '/templates/index',
+    ],
     'post_list' => [
-      'path' => $module_path . '/templates',
+      'path' => $module_path . '/templates/post',
       'variables' => ['posts' => NULL],
     ],
     'post_view' => [
-      'path' => $module_path . '/templates',
+      'path' => $module_path . '/templates/post',
       'variables' => ['post' => false],
     ],
   ];

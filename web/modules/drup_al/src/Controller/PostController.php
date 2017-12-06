@@ -30,6 +30,13 @@ class PostController extends ControllerBase {
     );
   }
   
+  public function index() {
+    return array(
+      '#theme' => 'post_index',
+      // '#posts' => $postList,
+    );
+  }
+  
   public function listPost() {
     $postList = [];
     
