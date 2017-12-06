@@ -2,6 +2,7 @@
 
 use Drupal\Core\PhpStorage\PhpStorageFactory;
 use Drupal\Core\Cache\Cache;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 $node = null;
 
@@ -23,6 +24,15 @@ function drup_al_theme($existing, $type, $theme, $path) {
       'variables' => ['post' => false],
     ],
   ];
+}
+
+function drup_al_user_login($account) {
+  if($account->hasRole('system_admin')) {
+    //redirect to admin page
+    $response = new RedirectResponse('/admin', '301');
+    $response->send();
+    exit(0);
+  }
 }
 
 function drup_al_node_presave(Drupal\node\NodeInterface $node) {
