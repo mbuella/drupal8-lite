@@ -8,20 +8,33 @@ $node = null;
 
 function drup_al_theme($existing, $type, $theme, $path) {
   $module_path =  drupal_get_path('module', 'drup_al');
+  $template_path = $module_path . '/templates/';
+
+  $default_settings = [  
+      'render element' => 'default',
+      'path' => $template_path,
+  ];
+
   return [
-    'main_index' => [
-      'path' => $module_path . '/templates/index',
-    ],
+    'main_index' => array_merge($default_settings, [  
+      'template' => 'index/main-index',
+    ]),
     'error_404' => [
+      'render element' => 'default',
       'path' => $module_path . '/templates/error',
+      // 'theme path' => $module_path,
     ],
     'post_list' => [
+      'render element' => 'default',
       'path' => $module_path . '/templates/post',
       'variables' => ['posts' => NULL],
+      // 'theme path' => $module_path,
     ],
     'post_view' => [
+      'render element' => 'default',
       'path' => $module_path . '/templates/post',
       'variables' => ['post' => false],
+      // 'theme path' => $module_path,
     ],
   ];
 }

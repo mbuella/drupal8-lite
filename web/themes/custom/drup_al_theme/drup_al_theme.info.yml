@@ -1,9 +1,14 @@
-name: drup_al
+name: drup_al_theme
 description: Drupal Lite Very Simple Custom Theme
 base theme: stable
+package: custom
 # version: 1
 type: theme
 core: 8.x
+libraries:
+  - drup_al_theme/global-styles
+  - drup_al_theme/global-scripts
+
 regions:
   # headline: Headline
   header: Header

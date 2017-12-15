@@ -1,0 +1,37 @@
+<?php
+
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\Crypt;
+
+function drup_al_theme_preprocess_html(&$variables) {
+  $variables['#attached'] = [];
+  $types = [
+    'styles' => 'css',
+    'scripts' => 'js',
+    'scripts_bottom' => 'js-bottom',
+  ];
+  
+  $variables['placeholder_token'] = Crypt::randomBytesBase64(55);
+  foreach ($types as $type => $placeholder_name) {
+    $placeholder = '<' . $placeholder_name . '-placeholder token="' . $variables['placeholder_token'] . '">';
+    $variables['#attached']['html_response_attachment_placeholders'][$type] = $placeholder;
+  }
+}
+
+/* function drup_al_theme_preprocess_page(&$variables) {
+  // echo 'page: ';dump($variables);die();
+  
+  $path = drupal_get_path('theme', 'drup_al_theme');
+     // Render the main scripts file.
+  $local_js = array(
+    '#attached' => array(
+      'js-bottom' => array(
+        $path . '/js/script.js' => array(
+          'group' => JS_THEME,
+          'weight' => 9999),
+      ),
+    ),
+  );
+  \Drupal::service('renderer')->renderRoot($local_js);
+
+} */
