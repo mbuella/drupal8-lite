@@ -2,7 +2,7 @@
 
 # export current site settings
 cd web
-../vendor/bin/drush cim sync -y
+../vendor/bin/drush cex sync -y
 
 # remove existing sync.tar.gz file
 cd ..
