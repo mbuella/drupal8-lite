@@ -3,6 +3,8 @@
 use Drupal\Core\PhpStorage\PhpStorageFactory;
 use Drupal\Core\Cache\Cache;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Drupal\Core\Link;
 
 $node = null;
 
@@ -80,5 +82,26 @@ function drup_al_clear_cache() {
   // Cache::getBins()['page']->deleteAll();
   foreach (Cache::getBins() as $service_id => $cache_backend) {
    $cache_backend->deleteAll();
+  }
+}
+
+function drup_al_system_breadcrumb_alter(&$breadcrumb, $route_match, array $context) {
+  // Implementation derived from [http://www.gregboggs.com/drupal8-breadcrumbs/]
+  
+  $request = \Drupal::request();
+  $route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
+  
+  // Do not adjust the breadcrumbs on admin paths.
+  if ($route && !$route->getOption('_admin_route')) {
+    $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+    /* if (!isset($title)) {
+      // Fallback to using the raw path component as the title if the
+      // route is missing a _title or _title_callback attribute.
+      $path = trim($context->getPathInfo(), '/');
+      $path_elements = explode('/', $path);
+      $title = str_replace(array('-', '_'), ' ', Unicode::ucfirst(end($path_elements)));
+    }
+    */
+    $breadcrumb->addLink(Link::createFromRoute($title, '<none>'));
   }
 }
