@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="http://drup.al/themes/custom/drup_al/favicon.ico" type="image/vnd.microsoft.icon" />
 
-        <title>Main (Homepage) | Drupal 8 Lite -  Sample Site</title>
+        <title>Post List | Drupal 8 Lite -  Sample Site</title>
         <!-- CSS Changes 12/11/2017 -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- End CSS changes 12/11/2017 -->
@@ -32,15 +32,14 @@
         section#main {
           min-height: calc(100vh - 132px);
         }
-
+        
         .block-sitebranding .navbar-brand {
             padding: 10px 20px;
         }
         
         footer.container-fluid {
-            bottom: 0;
-            position: absolute;
-            bottom: 0;
+            /* bottom: 0; */
+            /* position: absolute; */
             width: 100%;
             height: 60px;
             line-height: 60px;
@@ -79,10 +78,42 @@
           </header>
           
           <section id="main" class="container">
-            <div class="jumbotron">
-              <h1>Welcome to drup.al!</h1> 
-              <p>Make something amazing, for anyone</p> 
-            </div>
+          
+              <ol class="breadcrumb">
+                  <li>
+                      <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                      <a href="post_list.html">Post List</a>
+                  </li>
+              </ol>
+              
+              <div id="block-drup-al-theme-page-title">
+                  <h1>Post List</h1>
+              </div>
+              
+              <div id="block-drup-al-theme-content">
+              
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <div class="col-md-9" style="padding: 0">
+                          <h3 class="panel-title">Lorem Ipsum</h3>
+                      </div>
+                      <div class="col-md-3" style="padding: 0">
+                          <h4 style="margin: 0"><span class="label label-info pull-right">Article</span></h4>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                      Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-success" href="post_view.html">Read more</a>
+                    </div>
+                </div>
+              
+              </div>
+          
           </section>
           
           <!-- <footer> -->

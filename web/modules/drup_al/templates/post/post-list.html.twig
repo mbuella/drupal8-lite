@@ -1,13 +1,25 @@
 {% for post in posts %}
-  {{ post.title }}
-  <br>
-  {{ post.category }}
-  <br>
-  {{ post.intro }}
-  <br>
-  <a href="{{ url('post.view',{'id': post.id}) }}">Read more</a>
-  <br>
-  <br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="col-md-9" style="padding: 0">
+            <h3 class="panel-title">{{ post.title }}</h3>
+        </div>
+        <div class="col-md-3" style="padding: 0">
+            <h4 style="margin: 0"><span class="label label-info pull-right">{{ post.category }}</span></h4>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {% if post.intro is defined and post.intro is not empty %}
+    <div class="panel-body">
+        {{ post.intro }}
+    </div>
+    {% endif %}
+    <div class="panel-footer">
+        <a class="btn btn-success" href="{{ url('post.view',{'id': post.id}) }}">Read more</a>
+    </div>
+</div>
+
 {% else %}
   <p>There's no post to load as for the moment.</p>
 {% endfor %}
