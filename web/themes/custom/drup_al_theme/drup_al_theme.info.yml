@@ -1,7 +1,7 @@
-name: drup_al_theme
+name: drup.al Default Theme
 description: Drupal Lite Very Simple Custom Theme
 base theme: stable
-package: custom
+package: 'drup_al'
 # version: 1
 type: theme
 core: 8.x
@@ -12,6 +12,8 @@ libraries:
 regions:
   # headline: Headline
   header: Header
+  site_branding: 'Site Branding'
+  nav_menu: 'Navigation Menu'
   content: Content
   # sidebar: Sidebar
   footer: Footer

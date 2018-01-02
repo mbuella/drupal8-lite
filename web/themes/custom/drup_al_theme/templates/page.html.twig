@@ -6,10 +6,13 @@
   </section> 
 {% endif %}
 
-  <header>
+  <header class="navbar navbar-inverse">
     {# Nav/Header #}
-    <div class="container">
-        {{ page.header }}
+    <div class="container-fluid">
+      {# Site branding #}
+      {{ page.site_branding }}
+      {# Navigation menu (Main+Account) #}
+      {{ page.nav_menu }}
     </div>
   </header>
   
@@ -27,11 +30,9 @@
         </div>
     </div>
   </section>
-  
-  <footer>
-      <div class="container">
-        {{ page.footer }}
-      </div>
+    
+  <footer class="container-fluid text-center">
+      {{ page.footer }}
   </footer>
   
 </div>

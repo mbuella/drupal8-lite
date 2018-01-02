@@ -3,6 +3,7 @@ global-styles:
   css: 
     theme: 
       includes/bootstrap/css/bootstrap.min.css: {}
+      includes/fontawesome/css/font-awesome.min.css: {}
       css/style.css: {weight: 10}
       
 global-scripts:
