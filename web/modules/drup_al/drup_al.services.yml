@@ -8,3 +8,5 @@ services:
     # MANAGERS
     drup_al.post_manager:
         class: Drupal\drup_al\Entity\Manager\PostManager
+    drup_al.node_session_manager:
+        class: Drupal\drup_al\Session\NodeSessionManager

@@ -12,11 +12,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class PostController extends ControllerBase {
   
   private $postManager;
+  private $nodeSessionManager;
   protected $loggerFactory;
   
   public function __construct($services) {
     if(count($services) > 0) {
       $this->postManager = $services['postManager'];
+      $this->nodeSessionManager = $services['nodeSessionManager'];
       $this->loggerFactory = $services['loggerFactory'];      
     }
   }
@@ -25,9 +27,19 @@ class PostController extends ControllerBase {
     return new static(
       array(
         'postManager' => $container->get('drup_al.post_manager'),
+        'nodeSessionManager' => $container->get('drup_al.node_session_manager'),
         'loggerFactory' => $container->get('logger.factory'),
       )
     );
+  }
+  
+  public function getPostTitle()
+  {
+    if($this->nodeSessionManager->getNodeRouteName() == 'post.view') {
+      $currentPostId = $this->nodeSessionManager->getNodeId();
+      return $this->postManager->getPostTitleById($currentPostId);
+    }
+    return '';
   }
   
   public function index() {
@@ -78,7 +90,7 @@ class PostController extends ControllerBase {
     $entity = $this->postManager->getPost($id);
     $post = array(
         // 'id' => $entity->id(),
-        'title' => $entity->get('title')->value,
+        // 'title' => $entity->get('title')->value,
         'content' => $entity->get('body')->value,
         // 'slug' => $entity->get('field_post_slug')->value,
         // title value of the category entity reference (entity field)

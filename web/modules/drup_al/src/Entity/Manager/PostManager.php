@@ -25,4 +25,9 @@ class PostManager
     //throw post not found
     throw new NotFoundHttpException("That post does not exist!");
   }
+  
+  public function getPostTitleById($id)
+  {
+    return $this->getPost($id)->get('title')->value;
+  }
 }

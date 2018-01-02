@@ -20,7 +20,8 @@ post.view:
   path: '/post/{id}'
   defaults:
     _controller: '\Drupal\drup_al\Controller\PostController::viewPost'
-    _title: 'Post View'
+    # _title: 'Post View'
+    _title_callback: '\Drupal\drup_al\Controller\PostController::getPostTitle'
   requirements:
     _permission: 'access content'
     
